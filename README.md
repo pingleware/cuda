@@ -1,5 +1,5 @@
 # CUDA Development
-To help in understanding CUDA development for NVIDIA GT 730 (https://www.amazon.com/dp/B09KTFWNPK), and is not support under OLLAMA, though this card is supported.
+To help in understanding CUDA development for NVIDIA GT 730 (https://www.amazon.com/dp/B09KTFWNPK), and is not support under OLLAMA, though this card is supported. I choose this card for it's low profile configuration as the card will be installed in a 2U mini-itx rack case. Since OLLAMA does not support this GPU, a private build of OLLAMA must be performed to include support for this GPU card.
 
 ![alt text](images/gpu-windows11.png "GPU Monitorin on Windows 11")
 
@@ -22,3 +22,5 @@ Device Name: �
 Compute Capability: -900109984.623
 Total Global Memory: 134182587 MB
 ```
+
+Now that I have a test CUDA application working (detecting the GPU) with this card, progress is being made on the OLLAMA private build.
