@@ -2,6 +2,7 @@
 #include <iostream>
 #include "gpu_info.cuh"
 
+
 // Function to identify the GPU
 void identifyGPU() {
     int deviceCount;
