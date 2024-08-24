@@ -50,3 +50,55 @@ PCI Bus ID: -760661836
 PCI Device ID: 32758
 PCI Domain ID: -760345576
 ```
+
+# Learning Resources
+
+C++ CUDA Tutorial: Theory & Setup: Part 1 - https://www.youtube.com/watch?v=IuxJO0HOcH0
+
+# OpenCL as an alternative
+Using the OpenCL-Wrapper, and upgrade the SLN to VS2022, compiled and executed successfully,
+
+```
+|----------------.------------------------------------------------------------|
+| Device ID    0 | GeForce GT 730                                             |
+|----------------'------------------------------------------------------------|
+|----------------.------------------------------------------------------------|
+| Device ID      | 0                                                          |
+| Device Name    | GeForce GT 730                                             |
+| Device Vendor  | NVIDIA Corporation                                         |
+| Device Driver  | 391.35 (Windows)                                           |
+| OpenCL Version | OpenCL C 1.1                                               |
+| Compute Units  | 2 at 1400 MHz (384 cores, 1.075 TFLOPs/s)                  |
+| Memory, Cache  | 4096 MB, 32 KB global / 48 KB local                        |
+| Buffer Limits  | 1024 MB global, 64 KB constant                             |
+|----------------'------------------------------------------------------------|
+| Info: OpenCL C code successfully compiled.                                  |
+| Info: Value before kernel execution: C[0] = 1.00000000                      |
+| Info: Value after kernel execution: C[0] = 5.00000000                       |
+```
+
+## Building identify_gpu
+
+```
+gcc -o identify_gpu.exe identify_gpu.c -I"..\OpenCL-Wrapper\src\OpenCL\include" -L"..\OpenCL-Wrapper\src\OpenCL\lib" -lOpenCL
+
+cl /I"..\OpenCL-Wrapper\src\OpenCL\include" identify_gpu.c /link /LIBPATH:"..\OpenCL-Wrapper\src\OpenCL\lib" OpenCL.lib
+
+```
+and the output is
+
+```
+Platform 0: NVIDIA CUDA
+Device 0: GeForce GT 730
+```
+
+## Building matrix_addition
+
+```
+cl /I"..\OpenCL-Wrapper\src\OpenCL\include" matrix_addition.cpp -o matrix_add.exe /link /LIBPATH:"..\OpenCL-Wrapper\src\OpenCL\Lib" OpenCL.lib
+```
+
+results,
+```
+Result: 11 22 33 44 55
+```
