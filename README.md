@@ -1,5 +1,8 @@
 # CUDA Development
-To help in understanding CUDA development for NVIDIA GT 730
+To help in understanding CUDA development for NVIDIA GT 730 (https://www.amazon.com/dp/B09KTFWNPK), and is not support under OLLAMA, though this card is supported.
+
+![alt text](images/gpu-windows11.png "GPU Monitorin on Windows 11")
+
 
 ## Developer Environment Configuration
 
