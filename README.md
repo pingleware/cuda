@@ -3,20 +3,21 @@ To help in understanding CUDA development for NVIDIA GT 730 (https://www.amazon.
 
 ![alt text](images/gpu-windows11.png "GPU Monitorin on Windows 11")
 
+In conlusion, while CUDA is no longer supported for legacy NVIDIA hardware, the GPU hardware does not become obsolete and can continue a useful life through OpenCL integration and implementation.
 
 ## Developer Environment Configuration
 
     1. Install GT 730 driver v391.35* from https://www.nvidia.com/Download/driverResults.aspx/132845/en-us/
     2. Install Visual Studio 2022 or latest from https://visualstudio.microsoft.com/downloads/
-    3. Install latest CUDA toolkit from https://developer.nvidia.com/cuda-toolkit
+    3. ~~Install latest CUDA toolkit from https://developer.nvidia.com/cuda-toolkit~~
     4. Install w64devkit from https://github.com/skeeto/w64devkit/releases 
 
-if installing CUDA Toolkit 10.2.889 from https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal, then
+~~if installing CUDA Toolkit 10.2.889 from https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal, then~~
 
-    1. Install Visual Studio 2019
-    2. Install CUDA 10.2 Toolkit (link above)
-    3. Run setup_cuda_vs2019.bat
-    4. Edit C:\Program FIles\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include\crt\host_config.h on line 156, change _MSC_VER >= 1930 to _MSC_VER >= 2000. Administrator access required to edit this file.
+    1. ~~Install Visual Studio 2019~~
+    2. ~~Install CUDA 10.2 Toolkit (link above)~~
+    3. ~~Run setup_cuda_vs2019.bat~~
+    4. ~~Edit C:\Program FIles\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include\crt\host_config.h on line 156, change _MSC_VER >= 1930 to _MSC_VER >= 2000. Administrator access required to edit this file.~~
 
 *Windows 11 can install the Windows 10 NVIDIA drivers.
 
@@ -36,6 +37,21 @@ PCI Domain ID: 2
 ```
 
 Now that I have a test CUDA application working (detecting the GPU) with this card, progress is being made on the OLLAMA private build.
+
+```
+cl /I"..\OpenCL-Wrapper\src\OpenCL\include" gpu_info.cpp /link /LIBPATH:"..\OpenCL-Wrapper\src\OpenCL\lib" OpenCL.lib
+```
+results,
+```
+OpenCL-capable device found!
+Device Name: GeForce GT 730
+Compute Units: 2
+Total Global Memory: 4096 MB
+Max Work Group Size: 1024
+Clock Frequency: 1400 MHz
+PCI Bus ID: 0
+PCI Device ID: 0
+```
 
 ### Using VS2019 with CUDA Toolkit 10.2
 
